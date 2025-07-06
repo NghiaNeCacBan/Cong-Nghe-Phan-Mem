@@ -1,4 +1,5 @@
-   Ứng dụng học và luyện thi chứng chỉ tiếng Nhật (NAT-TEST, JLPT).
+# Quiz Nhat - Hệ thống học tập tiếng Nhật
+
 ## 📖 Mô tả dự án
 
 Quiz Nhat là một hệ thống học tập tiếng Nhật trực tuyến hoàn chỉnh, bao gồm:
@@ -7,13 +8,32 @@ Quiz Nhat là một hệ thống học tập tiếng Nhật trực tuyến hoàn
 - Database: MySQL với schema được thiết kế tối ưu
 - Tính năng đầy đủ: Đăng nhập/đăng ký, xem video, làm quiz, theo dõi kết quả
 
- ## Cấu trúc
- 
-- `backend`: ASP.NET Core API (C#).
-- `frontend`: ReactJS giao diện.
-- `docs`: Tài liệu (Google Docs: https://docs.google.com/document/d/1AAfwjJi_yI-1v0pb5JhanZweVbhcMmtB40rJQFMnhTc/edit).
-
 ## 🚀 Cài đặt và chạy dự án
+
+### Yêu cầu hệ thống
+- Node.js (v14 trở lên)
+- MySQL (v8 trở lên)
+- npm hoặc yarn
+
+### 1. Clone dự án
+```bash
+git clone <repository-url>
+cd quizNhat
+```
+
+### 2. Cài đặt dependencies
+```bash
+# Cài đặt tất cả dependencies
+npm run install-all
+
+# Hoặc cài đặt từng phần
+npm install                    # Root package
+cd backend && npm install      # Backend
+cd ../frontend && npm install  # Frontend
+```
+
+### 3. Cấu hình database
+
 #### Tạo database MySQL:
 ```sql
 CREATE DATABASE quiz_nhat_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -55,13 +75,73 @@ npm run client
 ```
 
 ### 6. Truy cập ứng dụng
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000
 
+## 📱 Tính năng chính
 
-## Hướng dẫn chạy
-   - **Backend**: `cd backend && dotnet run`
-   - **Frontend**: `cd frontend && npm start`
+### 🔐 Xác thực người dùng
+- Đăng ký tài khoản mới
+- Đăng nhập (username/password)
+- Quản lý phiên đăng nhập với JWT
+
+### 📚 Quản lý khóa học
+- Danh sách khóa học theo cấp độ (N5-N1)
+- Xem chi tiết khóa học
+- Video bài học tích hợp YouTube
+- Lọc khóa học theo cấp độ
+
+### 📝 Hệ thống quiz
+- Làm bài kiểm tra trực tuyến
+- Đếm ngược thời gian
+- Chấm điểm tự động
+- Hiển thị kết quả chi tiết
+
+### 📊 Theo dõi tiến độ
+- Lịch sử làm bài
+- Thống kê điểm số
+- Xem chi tiết từng lần làm bài
+- Phân tích kết quả học tập
+
+## 🗄️ Cấu trúc database
+
+### Bảng chính:
+- **users**: Thông tin người dùng
+- **courses**: Khóa học
+- **quizzes**: Bài kiểm tra
+- **questions**: Câu hỏi
+- **quiz_results**: Kết quả làm bài
+- **user_answers**: Câu trả lời của người dùng
+- **user_progress**: Tiến độ học tập
+
+### Dữ liệu mẫu:
+- 5 khóa học từ N5 đến N3
+- 5 bài quiz với các câu hỏi mẫu
+- Câu hỏi về Hiragana, Katakana, từ vựng, ngữ pháp
+
+## 🔧 Cấu trúc dự án
+
+```
+quizNhat/
+├── backend/                 # Node.js API
+│   ├── server.js           # Main server file
+│   ├── package.json        # Backend dependencies
+│   └── .env               # Environment variables
+├── frontend/               # React app
+│   ├── public/            # Static files
+│   ├── src/               # Source code
+│   │   ├── components/    # React components
+│   │   ├── pages/         # Page components
+│   │   ├── contexts/      # React contexts
+│   │   └── App.js         # Main app component
+│   └── package.json       # Frontend dependencies
+├── database/              # Database files
+│   └── init.sql          # Database schema & sample data
+├── package.json          # Root package with scripts
+└── README.md            # This file
+```
+
+## 🎯 Hướng dẫn sử dụng
 
 ### Cho người học:
 1. **Đăng ký tài khoản** với thông tin cơ bản
@@ -71,8 +151,8 @@ npm run client
 5. **Theo dõi kết quả** và tiến độ học tập
 
 ### Tài khoản demo:
-   - Username: `demo`
-   - Password: `123456`
+- Username: `demo`
+- Password: `123456`
 
 ## 🔌 API Endpoints
 
@@ -87,7 +167,9 @@ Xem chi tiết tại [API Documentation](./API_DOCS.md)
 - `POST /api/quizzes/:id/submit` - Nộp bài
 - `GET /api/user/results` - Kết quả của user
 
-  ### Frontend:
+## 🛠️ Công nghệ sử dụng
+
+### Frontend:
 - React 18
 - React Router DOM
 - Styled Components
@@ -158,6 +240,7 @@ Nếu gặp vấn đề, vui lòng:
 2. Đảm bảo tất cả dependencies đã được cài đặt
 3. Kiểm tra kết nối database
 4. Đọc kỹ error message
+
 ## 📝 License
 
 MIT License - Tự do sử dụng cho mục đích học tập và thương mại.
