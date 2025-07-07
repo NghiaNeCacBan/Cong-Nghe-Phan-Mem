@@ -8,75 +8,6 @@ Quiz Nhat là một hệ thống học tập tiếng Nhật trực tuyến hoàn
 - Database: MySQL với schema được thiết kế tối ưu
 - Tính năng đầy đủ: Đăng nhập/đăng ký, xem video, làm quiz, theo dõi kết quả
 
-## 🚀 Cài đặt và chạy dự án
-
-### Yêu cầu hệ thống
-- Node.js (v14 trở lên)
-- MySQL (v8 trở lên)
-- npm hoặc yarn
-
-### 1. Clone dự án
-```bash
-git clone <repository-url>
-cd quizNhat
-```
-
-### 2. Cài đặt dependencies
-```bash
-# Cài đặt tất cả dependencies
-npm run install-all
-
-# Hoặc cài đặt từng phần
-npm install                    # Root package
-cd backend && npm install      # Backend
-cd ../frontend && npm install  # Frontend
-```
-
-### 3. Cấu hình database
-
-#### Tạo database MySQL:
-```sql
-CREATE DATABASE quiz_nhat_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-#### Import dữ liệu mẫu:
-```bash
-mysql -u root -p quiz_nhat_db < database/init.sql
-```
-
-### 4. Cấu hình môi trường
-
-Tạo file `.env` trong thư mục `backend` (đã có sẵn):
-```env
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=quiz_nhat_db
-JWT_SECRET=quiz_nhat_secret_key_2024
-```
-
-**Lưu ý:** Cập nhật `DB_PASSWORD` theo cấu hình MySQL của bạn.
-
-### 5. Chạy ứng dụng
-
-#### Chạy đồng thời backend và frontend:
-```bash
-npm run dev
-```
-
-#### Hoặc chạy riêng từng phần:
-```bash
-# Terminal 1: Backend
-npm run server
-
-# Terminal 2: Frontend
-npm run client
-```
-
-### 6. Truy cập ứng dụng
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
 
 ## 📱 Tính năng chính
 
@@ -198,32 +129,7 @@ Xem chi tiết tại [API Documentation](./API_DOCS.md)
 - [ ] Tích hợp thanh toán
 - [ ] Mobile app (React Native)
 
-## 🐛 Troubleshooting
 
-### Lỗi kết nối database:
-```bash
-# Kiểm tra MySQL đang chạy
-mysql -u root -p
-
-# Tạo lại database
-mysql -u root -p -e "DROP DATABASE IF EXISTS quiz_nhat_db; CREATE DATABASE quiz_nhat_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-mysql -u root -p quiz_nhat_db < database/init.sql
-```
-
-### Lỗi port đã được sử dụng:
-```bash
-# Kill process trên port 3000/5000
-npx kill-port 3000
-npx kill-port 5000
-```
-
-### Xóa cache và cài đặt lại:
-```bash
-rm -rf node_modules package-lock.json
-rm -rf backend/node_modules backend/package-lock.json  
-rm -rf frontend/node_modules frontend/package-lock.json
-npm run install-all
-```
 
 ## � Security
 
